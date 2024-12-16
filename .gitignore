@@ -1,0 +1,3 @@
+/examples/*
+!/examples/mpsbot.yaml.example
+**/logs/

@@ -1,0 +1,16 @@
+[Unit]
+Description=mpsbot Service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/app/mpsbot
+EnvironmentFile=/app/mpsbot/mpsbot.env
+User=root
+Group=root
+Restart=on-failure
+RestartSec=5s
+ExecStart=/app/mpsbot/mpsbot $OPTIONS
+
+[Install]
+WantedBy=multi-user.target
