@@ -22,8 +22,9 @@ type CoreOptions struct {
 }
 
 type TaskOptions struct {
-	Interval   int    `yaml:"interval"`
-	OutputPath string `yaml:"outputpath"`
+	Interval       int            `yaml:"interval"`
+	OutputPath     string         `yaml:"outputpath"`
+	VmTenantLabels map[string]int `yaml:"vmtenantlabels"`
 }
 
 type RedisOptions struct {

@@ -1,5 +1,3 @@
-github.com/atompi/go-kits v0.0.0-20240903073959-30bdf41376b8 h1:piT2ktDKRVzm11Y7tEDVwooEAwqZWWju2uSpAwDX7V0=
-github.com/atompi/go-kits v0.0.0-20240903073959-30bdf41376b8/go.mod h1:ac2w5lH5Dfy+blajd6WO4WmLdMd+fBSt3zQlEj4BEfs=
 github.com/atompi/go-kits v0.0.0-20241216080629-59649e56cc6b h1:GGd/AS/4s9zvAAxOi6VHUd2hpRabXheEESANq6qLm3M=
 github.com/atompi/go-kits v0.0.0-20241216080629-59649e56cc6b/go.mod h1:ac2w5lH5Dfy+blajd6WO4WmLdMd+fBSt3zQlEj4BEfs=
 github.com/bsm/ginkgo/v2 v2.12.0 h1:Ny8MWAHyOepLGlLKYmXG4IEkioBysk6GpaRTLC8zwWs=

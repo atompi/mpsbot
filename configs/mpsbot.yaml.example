@@ -9,6 +9,9 @@ core:
 task:
   interval: 15
   outputpath: ./
+  vmtenantlabels:
+    vm_account_id: 2
+    vm_project_id: 0
 
 redis:
   addr: 127.0.0.1:6379

@@ -16,7 +16,8 @@ import (
 )
 
 type TargetYaml struct {
-	Targets []string `yaml:"targets"`
+	Targets []string       `yaml:"targets"`
+	Labels  map[string]int `yaml:"labels"`
 }
 
 func Handle(opts options.Options) {
@@ -39,16 +40,18 @@ func Handle(opts options.Options) {
 			module := parts[0]
 			instance := parts[1]
 			data[module] = append(data[module], instance)
-
-			err := writeToYAML(opts.Task.OutputPath, data)
-			if err != nil {
-				zap.S().Errorf("write to yaml failed: %v", err)
-			}
 		}
+
 		if err := iter.Err(); err != nil {
 			zap.S().Errorf("scan failed: %v", err)
+			continue
 		}
 		cancel()
+
+		err := writeToYAML(opts.Task.OutputPath, data, opts.Task.VmTenantLabels)
+		if err != nil {
+			zap.S().Errorf("write to yaml failed: %v", err)
+		}
 
 		time.Sleep(time.Duration(opts.Task.Interval) * time.Second)
 	}
@@ -61,13 +64,14 @@ func scan(c *redis.Client, prefix string, timeout int) *redis.ScanIterator {
 	return iter
 }
 
-func writeToYAML(path string, data map[string][]string) error {
+func writeToYAML(path string, data map[string][]string, labels map[string]int) error {
 	for k, v := range data {
 		fileName := fmt.Sprintf("%s.yaml", k)
 		filePath := filepath.Join(path, fileName)
 		raw := []TargetYaml{}
 		t := TargetYaml{
 			Targets: v,
+			Labels:  labels,
 		}
 		raw = append(raw, t)
 
